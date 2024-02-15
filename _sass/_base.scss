@@ -34,6 +34,10 @@ table {
   }
 }
 
+body {
+  font-family: 'Courier New', Courier, monospace;
+}
+
 a,
 table.table a {
   color: var(--global-theme-color);
