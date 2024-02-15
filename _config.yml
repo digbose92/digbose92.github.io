@@ -374,7 +374,6 @@ enable_progressbar: true # enables a horizontal progress bar linked to the verti
 # -----------------------------------------------------------------------------
 # Library versions
 # -----------------------------------------------------------------------------
-
 bootstrap-table:
   version: "1.22.1"
 chartjs:
