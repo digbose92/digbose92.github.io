@@ -2,21 +2,21 @@
   type: map
   contents:
     - name: Full Name
-      value: Albert Einstein
+      value: Digbalay Bose
     - name: Date of Birth
-      value: 14th March 1879
+      value: 15th November 1992
     - name: Languages
-      value: English, German
+      value: English, Bengali, Hindi
 
 - title: Education
   type: time_table
   contents:
     - title: PhD
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1905
+      institution: University of Southern California, Los Angeles, California, US
+      year: 2018-Present
       description:
-        - Description 1.
-        - Description 2.
+        - Introduced large-scale advertisement benchmark dataset (MM-AU) and multimodal models for semantic video understanding. 
+        - Developed multimodal context-fusion models for apparent emotion recognition in images.
         - title: Description 3.
           contents:
             - Sub-description 1.

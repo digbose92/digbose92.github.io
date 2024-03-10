@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Completed my internship at [**NVIDIA Maxine AI**](https://developer.nvidia.com/maxine). 
+Completed my internship at [<strong>NVIDIA Maxine AI</strong>](https://developer.nvidia.com/maxine). 
