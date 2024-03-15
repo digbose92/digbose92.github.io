@@ -4,7 +4,7 @@
     "label": "Phd Candidate",
     "image": "",
     "email": "dbose@usc.edu/digbose92@gmail.com",
-    "url": "https://digbose92.github.io/al-folio",
+    "url": "https://digbose92.github.io/",
     "location": {
       "address": "3710 McClintock Ave",
       "postalCode": "CA 90089",
@@ -25,15 +25,15 @@
       "name": "NVIDIA Maxine AI",
       "position": "Computer Vision and Graphics Intern",
       "url": "https://developer.nvidia.com/maxine",
-      "startDate": "May",
-      "endDate": "August 2023",
+      "startDate": "2022-05-16",
+      "endDate": "2022-08-18",
       "summary": "Developed end-to-end deep learning models for controllable portrait video animation as part of NVIDIA Maxine."
     },
     {
       "name": "NVIDIA Maxine AI",
       "position": "Software Engineering Intern",
-      "startDate": "May",
-      "endDate": "August 2022",
+      "startDate": "2023-05-16",
+      "endDate": "2023-08-18",
       "summary": "Developed end-to-end visual and audio-visual deep learning models for high-fidelity facial animation of avatars as part of Maxine ARSDK."
     }
   ],
@@ -47,62 +47,9 @@
       "area": "Multimodal learning",
       "studyType": "PhD",
       "GPA": "3.88/4.0",
-      "startDate": "2018",
-      "endDate": "Fall 2024 (Expected)",
+      "startDate": "2018-08-17",
+      "endDate": "Present",
       "courses": ["Grounding Natural Language", "Advanced Computer Vision", "Affective Computing"]
-    }
-  ],
-  "awards": [
-    {
-      "title": "Nobel Prize in Physics",
-      "date": "1921-11-01",
-      "awarder": "Royal Swedish Academy of Sciences",
-      "url": "https://www.nobelprize.org/prizes/physics/1921/einstein/biographical/",
-      "summary": "The Nobel Prizes are five separate prizes that, according to Alfred Nobel's will of 1895, are awarded to 'those who, during the preceding year, have conferred the greatest benefit to humankind.'"
-    }
-  ],
-  "certificates": [
-    {
-      "name": "Machine Learning",
-      "date": "2018-01-01",
-      "issuer": "Stanford University",
-      "url": "https://example.com",
-      "icon": "fa-solid fa-location-dot"
-    },
-    {
-      "name": "Quantum Computing",
-      "date": "2018-01-01",
-      "issuer": "Stanford University",
-      "url": "https://example.com",
-      "icon": "fa-solid fa-tag"
-    },
-    {
-      "name": "Quantum Information",
-      "date": "2018-01-01",
-      "issuer": "Stanford University",
-      "url": "https://example.com",
-      "icon": "fa-solid fa-envelope"
-    },
-    {
-      "name": "Quantum Cryptography",
-      "date": "2018-01-01",
-      "issuer": "Stanford University",
-      "url": "https://example.com",
-      "icon": "fa-solid fa-hashtag"
-    },
-    {
-      "name": "Quantum Communication",
-      "date": "2018-01-01",
-      "issuer": "Stanford University",
-      "url": "https://example.com",
-      "icon": "fa-solid fa-calendar"
-    },
-    {
-      "name": "Quantum Teleportation",
-      "date": "2018-01-01",
-      "issuer": "Stanford University",
-      "url": "https://example.com",
-      "icon": "fa-solid fa-clipboard-check"
     }
   ],
   "publications": [
