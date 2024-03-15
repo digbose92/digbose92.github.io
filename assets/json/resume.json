@@ -15,8 +15,8 @@
     "profiles": [
       {
         "network": "Twitter",
-        "username": "AlbertEinstein",
-        "url": "https://twitter.com/AlbertEinstein"
+        "username": "digbose92",
+        "url": "https://twitter.com/digbose92"
       }
     ]
   },
@@ -27,38 +27,29 @@
       "url": "https://developer.nvidia.com/maxine",
       "startDate": "May 2023",
       "endDate": "August 2023",
-      "summary": "Developed end-to-end deep learning models for controllable portrait video animation as part of NVIDIA Maxine"
+      "summary": "Developed end-to-end deep learning models for controllable portrait video animation as part of NVIDIA Maxine."
     },
     {
       "name": "NVIDIA Maxine AI",
       "position": "Software Engineering Intern",
       "startDate": "May 2022",
       "endDate": "August 2022",
-      "summary": "Developed end-to-end visual and audio-visual deep learning models for high-fidelity facial animation of avatars as part of Maxine ARSDK"
-    }
-  ],
-  "volunteer": [
-    {
-      "organization": "People's Climate March",
-      "position": "Lead Organizer",
-      "url": "https://example.com",
-      "startDate": "2014-04-01",
-      "endDate": "2015-07-01",
-      "summary": "Lead organizer for the New York City branch of the People's Climate March, the largest climate march in history.",
-      "highlights": ["Awarded 'Climate Hero' award by Greenpeace for my efforts organizing the march.", "Men of the year 2014 by Time magazine"]
+      "summary": "Developed end-to-end visual and audio-visual deep learning models for high-fidelity facial animation of avatars as part of Maxine ARSDK."
     }
   ],
   "education": [
     {
-      "institution": "University of Zurich, Zurich, Switzerland",
-      "location": "Zurich, Switzerland",
-      "url": "https://www.uzh.ch/",
-      "area": "Software Development",
+      "institution": "University of Southern California, Los Angeles, USA",
+      "location": "Los Angeles, CA",
+      "department": "Ming Hsieh Department of Electrical and Computer Engineering",
+      "affiliation": "Signal Analysis and Interpretation Laboratory (SAIL)",
+      "url": "https://sail.usc.edu/",
+      "area": "Multimodal learning",
       "studyType": "PhD",
-      "startDate": "1905-01-01",
-      "endDate": "1905-01-01",
-      "score": "10",
-      "courses": ["Theory of Relativity"]
+      "GPA": "3.88/4.0",
+      "startDate": "2018 August",
+      "endDate": "Fall 2024 (Expected)",
+      "courses": ["Grounding Natural Language", "Advanced Computer Vision", "Affective Computing"]
     }
   ],
   "awards": [
