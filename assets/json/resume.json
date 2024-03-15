@@ -25,14 +25,14 @@
       "name": "NVIDIA Maxine AI",
       "position": "Computer Vision and Graphics Intern",
       "url": "https://developer.nvidia.com/maxine",
-      "startDate": "May 2023",
+      "startDate": "May",
       "endDate": "August 2023",
       "summary": "Developed end-to-end deep learning models for controllable portrait video animation as part of NVIDIA Maxine."
     },
     {
       "name": "NVIDIA Maxine AI",
       "position": "Software Engineering Intern",
-      "startDate": "May 2022",
+      "startDate": "May",
       "endDate": "August 2022",
       "summary": "Developed end-to-end visual and audio-visual deep learning models for high-fidelity facial animation of avatars as part of Maxine ARSDK."
     }
@@ -47,7 +47,7 @@
       "area": "Multimodal learning",
       "studyType": "PhD",
       "GPA": "3.88/4.0",
-      "startDate": "2018 August",
+      "startDate": "2018",
       "endDate": "Fall 2024 (Expected)",
       "courses": ["Grounding Natural Language", "Advanced Computer Vision", "Affective Computing"]
     }
