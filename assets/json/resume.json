@@ -110,14 +110,27 @@
   ],
   "languages": [
     {
-      "language": "German",
-      "fluency": "Native speaker",
-      "icon": ""
+      "language": "English",
+      "fluency": "Fluent"
     },
     {
-      "language": "English",
-      "fluency": "Fluent",
-      "icon": ""
+      "language": "Hindi",
+      "fluency": "Fluent"
+    },
+    {
+      "language": "Bengali",
+      "fluency": "Native speaker"
     }
+  ],
+
+  "projects":[
+
+    {
+      "name": "Automated analysis of advertisement videos", 
+      "summary": "Introduced large-scale advertisement benchmark dataset and multimodal models for semantic video understanding tasks.",
+      "highlights": ["multimodal learning", "media understanding", "advertisements"],
+      "url":"https://dl.acm.org/doi/10.1145/3581783.3612371"
+    }
+
   ]
 }
