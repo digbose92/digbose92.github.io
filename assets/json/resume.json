@@ -44,10 +44,15 @@
       "url": "https://research.ibm.com/labs/india",
       "startDate": "2016",
       "endDate": "2018",
-      "summary": ["Developed an end-to-end soil moisture extraction system from satellite images by incorporating image interpolation techniques as a part of IBM Geospatial Analytics suite.", "Developed explainable deep learning models in the domains of image classification and visual search as a part of retail and operations effort"]
+      "summary": ["Developed an end-to-end soil moisture extraction system from satellite images by incorporating image interpolation techniques as a part of IBM Geospatial Analytics suite.", "Developed explainable deep learning models in the domains of image classification and visual search as a part of retail and operations effort."]
     },
     {
-
+      "name": "Indian Statistical Institute, Kolkata",
+      "position": "Research intern",
+      "url": "https://www.isical.ac.in/",
+      "startDate": "2013-05-11",
+      "endDate": "2013-07-11",
+      "summary": "Developed a key recovery scheme based on the properties of Slid Pairs for stream cipher Salsa20."
     }
   ],
   "education": [
