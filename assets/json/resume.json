@@ -164,10 +164,28 @@
     {
       "name": "Automated analysis of facial paralysis patients",
       "summary": "Developed a facial-landmark based video pipeline involving novel asymmetry measures for predicting standardized scores in a mixed effects modeling setup.",
-      "highlights": ["Keywords: facial landmarks, automated analysis, linear mixed effects model","Work published in Facial Plastic Surgery & Aesthetic Medicine proceedings"],
+      "highlights": ["Keywords: facial landmarks, automated analysis, linear mixed effects model","Work done in collaboration with Keck School of Medicine and Pacific Neuroscience Institute.","Work published in Facial Plastic Surgery & Aesthetic Medicine proceedings."],
       "url": "https://www.liebertpub.com/doi/abs/10.1089/fpsam.2021.0247?journalCode=fpsam",
       "startDate": "2021",
       "endDate":"2022"
+    },
+
+    {
+      "name": "Understanding emotion perception in art work",
+      "summary": "Developed multimodal transformer based architectures with configurable image features for evoked emotion recognition in art images.",
+      "highlights": ["Keywords: multimodal transformer, emotion recognition, art images", "Work published in ICCV CLVL workshop 2021."],
+      "url": "https://sites.google.com/view/iccv21clvl/program",
+      "startDate": "2021",
+      "endDate": "2021"
+    },
+
+    {
+      "name": "Computational analysis of gender portrayal in media",
+      "summary": "Analyzed emerging trends in TV shows and advertisements across the dimensions of age, perceived skintone and gender",
+      "highlights": ["Keywords: representation in media, media understanding", "Work done in collaboration with Geena Davis Institute on Gender in Media and Google Research."],
+      "url": "https://blog.google/intl/en-in/company-news/using-ai-to-study-demographic-representation-in-indian-tv/?utm_source=tw&utm_medium=social&utm_campaign=og&utm_content=&utm_term=", 
+      "startDate": "2020",
+      "endDate": "2023"
     }
   ]
 }

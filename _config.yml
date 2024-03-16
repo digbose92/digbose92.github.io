@@ -270,7 +270,6 @@ display_categories: ["blockquotes"] # these categories will be displayed on the 
 scholar:
   last_name: [Bose]
   first_name: [Digbalay]
-
   style: apa
   locale: en
 
