@@ -34,6 +34,7 @@
       "name": "NVIDIA Maxine AI",
       "location": "Remote",
       "position": "Software Engineering Intern",
+      "url": "https://developer.nvidia.com/maxine",
       "startDate": "2022-05-16",
       "endDate": "2022-08-18",
       "summary": "Developed end-to-end visual and audio-visual deep learning models for high-fidelity facial animation of avatars as part of Maxine ARSDK."
@@ -44,7 +45,7 @@
       "url": "https://research.ibm.com/labs/india",
       "startDate": "2016",
       "endDate": "2018",
-      "summary": ["Developed an end-to-end soil moisture extraction system from satellite images by incorporating image interpolation techniques as a part of IBM Geospatial Analytics suite.", "Developed explainable deep learning models in the domains of image classification and visual search as a part of retail and operations effort."]
+      "highlights": ["Developed an end-to-end soil moisture extraction system from satellite images by incorporating image interpolation techniques as a part of IBM Geospatial Analytics suite.", "Developed explainable deep learning models in the domains of image classification and visual search as a part of retail and operations effort."]
     },
     {
       "name": "Indian Statistical Institute, Kolkata",
@@ -117,42 +118,6 @@
       "language": "English",
       "fluency": "Fluent",
       "icon": ""
-    }
-  ],
-  "interests": [
-    {
-      "name": "Physics",
-      "icon": "fa-solid fa-tag",
-      "keywords": [
-        "Quantum Mechanics",
-        "Quantum Computing",
-        "Quantum Information",
-        "Quantum Cryptography",
-        "Quantum Communication",
-        "Quantum Teleportation"
-      ]
-    }
-  ],
-  "references": [
-    {
-      "name": "Professor John Doe",
-      "icon": "fa-solid fa-laptop",
-      "reference": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit. D"
-    },
-    {
-      "name": "Professor John Doe",
-      "icon": "fa-solid fa-thumbtack",
-      "reference": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit. D"
-    }
-  ],
-  "projects": [
-    {
-      "name": "Quantum Computing",
-      "summary": "Quantum computing is the use of quantum-mechanical phenomena such as superposition and entanglement to perform computation. Computers that perform quantum computations are known as quantum computers.",
-      "highlights": ["Quantum Teleportation", "Quantum Cryptography"],
-      "startDate": "2018-01-01",
-      "endDate": "2018-01-01",
-      "url": "https://example.com"
     }
   ]
 }
