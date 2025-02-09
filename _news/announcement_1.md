@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Joined Adobe Research, Bengaluru as a Research Scientist.
+Joined <a target="_blank" href="https://research.adobe.com/people/page/1/?location=Bangalore"><b>Adobe Research, Bengaluru</b></a> as a Research Scientist.
