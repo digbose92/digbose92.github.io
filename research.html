@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Research — Digbalay Bose</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=EB+Garamond:ital,wght@0,400..700;1,400..700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="wordmark">Digbalay Bose</a>
+    <nav>
+      <a href="index.html">About</a>
+      <a href="research.html" class="current">Research</a>
+      <a href="publications.html">Publications</a>
+      <a href="dispatches.html">Dispatches</a>
+      <a href="cv.html">CV</a>
+      <button class="tbtn" onclick="toggleTheme()">Mode</button>
+    </nav>
+  </div>
+</header>
+
+<article>
+
+  <!-- ================== MASTHEAD ================== -->
+  <div class="masthead rv d1">
+    <div class="dateline">The Work · 2026</div>
+    <h1>Re<em>search</em></h1>
+    <p class="subtitle">Notes on a small set of questions I keep returning to about multimodal learning.</p>
+    <div class="sep">· · ·</div>
+  </div>
+
+  <!-- ================== INTRO ================== -->
+  <section class="rv d2">
+    <p class="lead">
+      My work sits at the intersection of <strong>multimodal machine learning</strong>, <strong>computer vision</strong>, and <strong>applications of computer vision in healthcare</strong>. These threads don&rsquo;t always look related on a publication list, but they share a common preoccupation: <em>how to build models that read the world through more than one sense at once, and hold up when the world cooperates less than the benchmark did.</em>
+    </p>
+
+    <p>
+      In practice, the work orbits three concerns &mdash; each of which I&rsquo;ve been chasing, in one form or another, since the middle of graduate school. What follows is a short note on each, with a few pointers to the papers that live under them.
+    </p>
+  </section>
+
+  <hr class="orn">
+
+  <!-- ================== THEMES ================== -->
+  <section class="rv d2">
+    <h2 data-num="§ II">Three Questions</h2>
+
+    <!-- ─── Robustness ─── -->
+    <div class="theme-block">
+      <div class="n">Question 01</div>
+      <h3>Robustness</h3>
+      <div class="opening">&ldquo;How can a multimodal model fail <em>gracefully</em>, instead of collapsing?&rdquo;</div>
+      <p>
+        Multimodal models tend to break in the wild for an unglamorous reason: one of the modalities is missing or corrupted, and the system has no way to route around it. A video file arrives with silent audio. A page scan is blurred beyond OCR. A sensor drops out mid-inference.
+      </p>
+      <p>
+        Most of my recent work has been about teaching models to degrade gracefully &mdash; or, better, to re-route &mdash; when the input they expected isn&rsquo;t there. Generative models have become useful collaborators here: synthetic imagery can stand in for missing visual modalities at both training and test time, improving data efficiency and robustness at once.
+      </p>
+      <div class="papers">
+        <span class="plabel">Representative work</span>
+        <a href="publications.html">Can Text-to-image Models Assist Multi-modal Learning with Visual Modality Missing?</a> &nbsp;·&nbsp;
+        <a href="publications.html">FedMultimodal: A Benchmark for Multimodal Federated Learning</a>
+      </div>
+    </div>
+
+    <!-- ─── Generalization ─── -->
+    <div class="theme-block">
+      <div class="n">Question 02</div>
+      <h3>Generalization</h3>
+      <div class="opening">&ldquo;How do we move beyond the narrow slice of the world our benchmarks know?&rdquo;</div>
+      <p>
+        Most multimodal benchmarks overfit to a small, Anglophone-Western slice of the world. Faces, voices, advertising, storytelling, TV and film &mdash; the training distribution of a modern multimodal model is almost never <em>the world</em>. I care about systems that extend gracefully to novel tasks, diverse cultures, and long-tailed domains.
+      </p>
+      <p>
+        A recent joint study with <a href="https://research.google/" target="_blank">Google Research</a> and the <a href="https://seejane.org/" target="_blank">Geena Davis Institute on Gender in Media</a> on demographic representation in Indian television was one way of asking what generalization means when the training distribution is not the world. Advertisement understanding, movie scene recognition, and cross-domain sentiment analysis are other ways I&rsquo;ve approached the same question.
+      </p>
+      <div class="papers">
+        <span class="plabel">Representative work</span>
+        <a href="publications.html">MM-AU: Multimodal Understanding of Advertisement Videos</a> &nbsp;·&nbsp;
+        <a href="publications.html">MovieCLIP: Visual Scene Recognition in Movies</a> &nbsp;·&nbsp;
+        <a href="publications.html">Domain Adaptation for Sentiment Analysis</a>
+      </div>
+    </div>
+
+    <!-- ─── Explainability ─── -->
+    <div class="theme-block">
+      <div class="n">Question 03</div>
+      <h3>Explainability</h3>
+      <div class="opening">&ldquo;If a multimodal model reasons well, can I inspect <em>how</em>?&rdquo;</div>
+      <p>
+        A multimodal model&rsquo;s reasoning hides inside its fusion layers, where attention and feature mixing make opaque choices we later rationalize as predictions. I&rsquo;m interested in architectures whose reasoning a human can inspect &mdash; attention maps that mean something, feature contributions that can be audited, and evaluations that look past accuracy toward whether we can <em>trust</em> what a system did and why.
+      </p>
+      <p>
+        This matters most in the healthcare applications I work on, where a model&rsquo;s output can shape a clinical decision. Whether it&rsquo;s analyzing facial asymmetry in paralysis patients, estimating physiological arousal during driving, or studying sleep patterns as a biomarker, the model&rsquo;s reasoning has to survive scrutiny by someone who isn&rsquo;t a machine-learning researcher.
+      </p>
+      <div class="papers">
+        <span class="plabel">Representative work</span>
+        <a href="publications.html">Automatic Analysis of Asymmetry in Facial Paralysis Patients</a> &nbsp;·&nbsp;
+        <a href="publications.html">Multimodal Foundation Models for Autism Diagnostic Videos</a> &nbsp;·&nbsp;
+        <a href="publications.html">Contextually-rich Human Affect Perception</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="orn">
+
+  <!-- ================== COLLABORATIONS ================== -->
+  <section class="rv d3">
+    <h2 data-num="§ III">Collaborations &amp; Labs</h2>
+
+    <p>
+      The work above was shaped by the people I&rsquo;ve had the luck to work with. In graduate school, by <a href="https://sail.usc.edu/people/shri.html" target="_blank">Prof. Shrikanth Narayanan</a> and the community at the <a href="https://sail.usc.edu/" target="_blank">Signal Analysis and Interpretation Laboratory</a> at USC. Before that, by <a href="https://www.ee.iitb.ac.in/~sc/" target="_blank">Prof. Subhasis Chaudhuri</a> at IIT Bombay. Industry collaborators at <a href="https://research.adobe.com/" target="_blank">Adobe Research</a>, <a href="https://research.ibm.com/labs/india/" target="_blank">IBM Research</a>, <a href="https://developer.nvidia.com/maxine" target="_blank">NVIDIA Maxine</a>, <a href="https://research.google/" target="_blank">Google Research</a>, and clinicians at USC&rsquo;s Keck School have all left their mark.
+    </p>
+
+    <div class="pullquote">
+      &ldquo;Good research is rarely a solo act. These pages make it look like one &mdash; that&rsquo;s an artifact of how <em>CVs</em> are written, not of how the work happened.&rdquo;
+    </div>
+  </section>
+
+  <hr class="orn">
+
+  <!-- ================== WHAT I'D LIKE TO HEAR ================== -->
+  <section class="rv d3">
+    <h2 data-num="§ IV">What I&rsquo;d Like to Hear About</h2>
+
+    <p>
+      If you&rsquo;re working on any of the following, I&rsquo;d be glad to hear from you:
+    </p>
+
+    <p style="margin-left: 18px; padding-left: 18px; border-left: 2px solid var(--accent-dim); font-size: 17px; color: var(--ink-body); line-height: 1.6;">
+      &mdash; <em>Multimodal foundation models</em> for document and media understanding.<br>
+      &mdash; <em>Robustness under missing modalities</em>, whether via generation, fusion, or architectural design.<br>
+      &mdash; Applications of computer vision and audio in <em>clinical workflows</em> &mdash; especially where interpretability matters.<br>
+      &mdash; Fair and <em>culturally diverse</em> multimodal evaluation.
+    </p>
+
+    <p style="text-align: center; margin-top: 28px;">
+      Reach me at <a href="mailto:dbose@usc.edu">dbose [at] usc [dot] edu</a>.
+    </p>
+  </section>
+
+  <div class="colophon">
+    <p>
+      A longer academic record, including talks, teaching, and service, lives on the <a href="cv.html">CV page</a>. The complete list of papers is on <a href="publications.html">Publications</a>.
+    </p>
+    <div class="sig">&mdash; D. B.</div>
+  </div>
+
+</article>
+
+<script>
+  function toggleTheme() {
+    const html = document.documentElement;
+    html.setAttribute('data-theme',
+      html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  }
+</script>
+</body>
+</html>
