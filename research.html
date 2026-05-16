@@ -6,152 +6,1046 @@
 <title>Research — Digbalay Bose</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=EB+Garamond:ital,wght@0,400..700;1,400..700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================
+   Digbalay Bose — Personal Site (v2: technologist)
+   Body / display: Inter (variable, optical sized via -display)
+   Mono:           JetBrains Mono
+   ========================================================== */
+
+:root {
+  --bg:        #fbfaf8;
+  --bg-elev:   #f4f2ec;
+  --bg-panel:  #ffffff;
+  --text:      #0e0e0e;
+  --text-body: #1a1a1a;
+  --text-soft: #4a4a4a;
+  --text-mute: #767676;
+  --text-ghost:#b8b8b8;
+  --rule:      #e6e3dc;
+  --rule-fine: #f0ede7;
+  --rule-str:  #c8c5be;
+
+  --accent:      #2962ff;   /* electric research-lab blue */
+  --accent-soft: #d0deff;
+  --accent-deep: #0040d6;
+  --status-ok:   #00875a;
+  --warn:        #e07a3d;
+
+  --highlight: #fff7c2;
+}
+[data-theme="dark"] {
+  --bg:        #0d0d0e;
+  --bg-elev:   #161618;
+  --bg-panel:  #1a1a1c;
+  --text:      #f0eee8;
+  --text-body: #d8d6d0;
+  --text-soft: #a8a59e;
+  --text-mute: #6e6b65;
+  --text-ghost:#3c3a36;
+  --rule:      #232325;
+  --rule-fine: #1c1c1e;
+  --rule-str:  #2e2e30;
+
+  --accent:      #6b9bff;
+  --accent-soft: #1a2a55;
+  --accent-deep: #a8c0ff;
+  --status-ok:   #4ec999;
+  --warn:        #f59668;
+
+  --highlight: #2a2a14;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text-body);
+  font-family: "Inter", -apple-system, system-ui, "Segoe UI", sans-serif;
+  font-size: 15.5px;
+  line-height: 1.55;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "ss01", "cv11", "kern";
+  min-height: 100vh;
+  text-rendering: optimizeLegibility;
+}
+::selection { background: var(--accent); color: white; }
+[data-theme="dark"] ::selection { background: var(--accent); color: var(--bg); }
+a { color: inherit; text-decoration: none; }
+
+/* ==========================================================
+   TOP BAR
+   ========================================================== */
+.topbar {
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in srgb, var(--bg) 86%, transparent);
+  backdrop-filter: blur(10px) saturate(1.4);
+  border-bottom: 1px solid var(--rule);
+}
+.topbar-inner {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 12px 32px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+@media (max-width: 640px) { .topbar-inner { padding: 12px 20px; gap: 16px; } }
+
+.wordmark {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--text);
+}
+.wordmark .mark {
+  width: 22px; height: 22px;
+  background: var(--text);
+  color: var(--bg);
+  border-radius: 5px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px; font-weight: 600; letter-spacing: 0;
+}
+
+.topbar nav { margin-left: auto; display: flex; gap: 4px; }
+.topbar nav a {
+  padding: 6px 10px;
+  font-size: 13px;
+  font-weight: 450;
+  color: var(--text-soft);
+  border-radius: 6px;
+  transition: all .15s;
+}
+.topbar nav a:hover { background: var(--bg-elev); color: var(--text); }
+.topbar nav a.current { color: var(--text); font-weight: 500; background: var(--bg-elev); }
+@media (max-width: 640px) { .topbar nav a { padding: 6px 6px; font-size: 12px; } }
+
+.topbar .tbtn {
+  background: none;
+  border: 1px solid var(--rule);
+  color: var(--text-soft);
+  padding: 5px 10px;
+  border-radius: 6px;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all .15s;
+  margin-left: 6px;
+}
+.topbar .tbtn:hover { color: var(--accent); border-color: var(--accent); }
+
+/* ==========================================================
+   ARTICLE CONTAINER
+   ========================================================== */
+article {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 56px 32px 96px;
+}
+@media (max-width: 640px) {
+  article { padding: 36px 20px 64px; }
+}
+
+/* ==========================================================
+   MASTHEAD (left-aligned, with portrait at upper-right)
+   ========================================================== */
+.masthead {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: start;
+  margin-bottom: 40px;
+}
+@media (max-width: 540px) {
+  .masthead { grid-template-columns: 1fr; gap: 20px; }
+  .masthead .portrait { order: -1; }
+}
+
+.masthead .updated {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0;
+  color: var(--text-mute);
+  margin-bottom: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.masthead .updated .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--status-ok);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--status-ok) 22%, transparent);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse {
+  50% { box-shadow: 0 0 0 6px color-mix(in srgb, var(--status-ok) 0%, transparent); }
+}
+
+.masthead h1 {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: clamp(36px, 5.4vw, 48px);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  color: var(--text);
+  margin-bottom: 8px;
+  font-variation-settings: "opsz" 32;
+}
+
+.masthead .role {
+  font-size: 16px;
+  color: var(--text-soft);
+  line-height: 1.4;
+  max-width: 42ch;
+}
+.masthead .role a {
+  color: var(--text);
+  font-weight: 500;
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 1px;
+}
+.masthead .role a:hover { color: var(--accent); }
+
+/* Portrait */
+.portrait {
+  width: 96px; height: 96px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--bg-elev);
+  border: 1px solid var(--rule);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.portrait img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.portrait .initials {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 36px;
+  letter-spacing: -0.04em;
+  color: var(--accent);
+  font-variation-settings: "opsz" 32;
+}
+
+/* "Now" status block — replaces pull-quote */
+.now-block {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 14px;
+  padding: 14px 16px;
+  background: var(--bg-elev);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  margin: 24px 0 32px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.now-block + .now-block { margin-top: -28px; border-top-left-radius: 0; border-top-right-radius: 0; border-top: 0; }
+.now-block .lbl {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  padding-top: 2px;
+}
+.now-block .body { color: var(--text-body); }
+.now-block .body a {
+  color: var(--text);
+  font-weight: 500;
+  border-bottom: 1px solid var(--accent);
+}
+.now-block .body a:hover { color: var(--accent); }
+
+/* ==========================================================
+   PROSE
+   ========================================================== */
+section { margin-top: 48px; scroll-margin-top: 70px; }
+
+h2 {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: -0.015em;
+  color: var(--text);
+  margin-bottom: 18px;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--rule);
+}
+h2 .num {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--text-mute);
+  letter-spacing: 0;
+}
+h2 .meta {
+  margin-left: auto;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-mute);
+}
+h2 .meta a { color: var(--accent); }
+h2 .meta a:hover { color: var(--accent-deep); text-decoration: underline; }
+
+h3 {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 15.5px;
+  letter-spacing: -0.005em;
+  color: var(--text);
+  margin: 24px 0 8px;
+}
+
+p {
+  margin-bottom: 1em;
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: var(--text-body);
+}
+p a {
+  color: var(--text);
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 0px;
+  transition: all .15s ease;
+}
+p a:hover { color: var(--accent); }
+
+strong { font-weight: 600; color: var(--text); }
+em { font-style: italic; color: var(--text); }
+
+code, .mono {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.93em;
+  background: var(--bg-elev);
+  padding: 1px 6px;
+  border-radius: 4px;
+  border: 1px solid var(--rule);
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+/* "Read more" link rows */
+.next-link {
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--accent);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.next-link:hover { color: var(--accent-deep); }
+.next-link::after { content: "→"; transition: transform .2s; }
+.next-link:hover::after { transform: translateX(3px); }
+
+/* ==========================================================
+   STATS / SPARKLINES
+   ========================================================== */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 32px 0 36px;
+}
+@media (max-width: 540px) {
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+}
+.stat {
+  padding: 14px 14px;
+  background: var(--bg-panel);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+}
+.stat .n {
+  font-family: "Inter", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--text);
+  font-variation-settings: "opsz" 32;
+  margin-bottom: 2px;
+  font-feature-settings: "tnum";
+}
+.stat .l {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 10.5px;
+  letter-spacing: 0;
+  color: var(--text-mute);
+  text-transform: lowercase;
+}
+
+/* Sparkline strip */
+.spark-strip {
+  margin: 28px 0;
+  padding: 14px 16px;
+  background: var(--bg-panel);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 18px;
+  align-items: center;
+}
+.spark-strip .label {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 10.5px;
+  color: var(--text-mute);
+  letter-spacing: 0;
+}
+.spark-strip .label strong {
+  color: var(--text);
+  font-weight: 500;
+}
+.spark-strip svg { display: block; }
+
+/* ==========================================================
+   FILTERS
+   ========================================================== */
+.filters {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+.filter {
+  background: var(--bg-panel);
+  border: 1px solid var(--rule);
+  cursor: pointer;
+  padding: 5px 11px;
+  font-family: "Inter", sans-serif;
+  font-size: 12.5px;
+  font-weight: 450;
+  color: var(--text-soft);
+  border-radius: 999px;
+  transition: all .15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.filter .ct {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 10.5px;
+  color: var(--text-mute);
+  font-feature-settings: "tnum";
+}
+.filter:hover {
+  border-color: var(--text-soft);
+  color: var(--text);
+}
+.filter.active {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+}
+.filter.active .ct { color: var(--bg); opacity: 0.6; }
+
+/* ==========================================================
+   PUBLICATIONS
+   ========================================================== */
+.year-group {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 24px;
+  margin-bottom: 44px;
+}
+@media (max-width: 640px) {
+  .year-group { grid-template-columns: 1fr; gap: 8px; }
+}
+
+.year-group .yr-side {
+  position: sticky;
+  top: 70px;
+  align-self: start;
+}
+@media (max-width: 640px) { .year-group .yr-side { position: static; } }
+
+.year-group .yr {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  font-feature-settings: "tnum";
+}
+.year-group .ct {
+  display: block;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 10.5px;
+  color: var(--text-mute);
+  margin-top: 4px;
+}
+
+.pub-list {
+  list-style: none;
+}
+.pub-list > li {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--rule-fine);
+  position: relative;
+}
+.pub-list > li:first-child { padding-top: 0; }
+.pub-list > li:last-child { border-bottom: 0; }
+
+.pub-list > li.selected::before {
+  content: "";
+  position: absolute;
+  left: -14px;
+  top: 22px;
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.pub-list > li .venue-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+.pub-list > li .venue {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0;
+}
+.pub-list > li .tag {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-mute);
+  padding: 1px 7px;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  letter-spacing: 0;
+}
+.pub-list > li .tag.first {
+  color: var(--text);
+  border-color: var(--rule-str);
+}
+.pub-list > li .tag.selected-tag {
+  color: var(--accent);
+  border-color: var(--accent-soft);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+}
+
+.pub-list > li .title {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  line-height: 1.32;
+  font-weight: 550;
+  color: var(--text);
+  margin-bottom: 4px;
+  letter-spacing: -0.015em;
+}
+.pub-list > li .title .mono-name {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.92em;
+  font-weight: 500;
+  letter-spacing: 0;
+  background: var(--bg-elev);
+  padding: 1px 5px;
+  border-radius: 3px;
+  border: 1px solid var(--rule);
+}
+.pub-list > li .authors {
+  font-size: 13.5px;
+  color: var(--text-soft);
+  line-height: 1.45;
+  margin-bottom: 6px;
+}
+.pub-list > li .authors b {
+  color: var(--accent);
+  font-weight: 500;
+}
+.pub-list > li .booktitle {
+  font-size: 12.5px;
+  color: var(--text-mute);
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+.pub-list > li .links {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.pub-list > li .links a {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px;
+  color: var(--text-soft);
+  background: var(--bg-elev);
+  padding: 3px 9px;
+  border-radius: 4px;
+  border: 1px solid var(--rule);
+  transition: all .12s;
+  letter-spacing: 0;
+}
+.pub-list > li .links a:hover {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+}
+
+/* compact pub list (home) */
+.pubs-compact { list-style: none; }
+.pubs-compact li {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--rule-fine);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 14px;
+  align-items: baseline;
+}
+.pubs-compact li:first-child { padding-top: 0; }
+.pubs-compact li:last-child { border-bottom: 0; }
+.pubs-compact li .venue {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--accent);
+  white-space: nowrap;
+  padding-top: 2px;
+  min-width: 110px;
+}
+.pubs-compact li .body .title {
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-weight: 550;
+  color: var(--text);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  margin-bottom: 3px;
+}
+.pubs-compact li .body .auth {
+  font-size: 13px;
+  color: var(--text-mute);
+  line-height: 1.4;
+}
+.pubs-compact li .body .auth b {
+  color: var(--accent);
+  font-weight: 500;
+}
+@media (max-width: 540px) {
+  .pubs-compact li { grid-template-columns: 1fr; gap: 4px; }
+}
+
+/* ==========================================================
+   NOTES (formerly Dispatches)
+   ========================================================== */
+.notes { list-style: none; }
+.notes li {
+  display: grid;
+  grid-template-columns: 92px 84px 1fr;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--rule-fine);
+  align-items: baseline;
+}
+.notes li:first-child { padding-top: 0; }
+.notes li:last-child { border-bottom: 0; }
+
+@media (max-width: 600px) {
+  .notes li {
+    grid-template-columns: 92px 1fr;
+    gap: 6px 16px;
+  }
+  .notes li .kind { grid-column: 1; }
+  .notes li .body { grid-column: 1 / 3; }
+}
+
+.notes li .date {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 12px;
+  color: var(--text-mute);
+  font-feature-settings: "tnum";
+  white-space: nowrap;
+}
+.notes li .kind {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: lowercase;
+  padding: 2px 7px;
+  border-radius: 3px;
+  height: fit-content;
+  width: fit-content;
+}
+.notes li .kind.award  { color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, transparent); }
+.notes li .kind.role   { color: var(--status-ok); background: color-mix(in srgb, var(--status-ok) 12%, transparent); }
+.notes li .kind.thesis { color: var(--warn); background: color-mix(in srgb, var(--warn) 12%, transparent); }
+.notes li .kind.press  { color: var(--text-soft); background: var(--bg-elev); border: 1px solid var(--rule); padding: 1px 6px; }
+.notes li .kind.paper  { color: #5a4a8c; background: color-mix(in srgb, #5a4a8c 10%, transparent); }
+[data-theme="dark"] .notes li .kind.paper { color: #b095d4; background: color-mix(in srgb, #b095d4 12%, transparent); }
+.notes li .kind.intern { color: var(--text-soft); background: var(--bg-elev); border: 1px solid var(--rule); padding: 1px 6px; }
+.notes li .kind.misc   { color: var(--text-soft); background: var(--bg-elev); border: 1px solid var(--rule); padding: 1px 6px; }
+
+.notes li .body {
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--text-body);
+}
+.notes li .body em { font-style: italic; }
+.notes li .body a {
+  color: var(--text);
+  border-bottom: 1px solid var(--accent);
+}
+.notes li .body a:hover { color: var(--accent); }
+
+/* ==========================================================
+   RESEARCH PAGE — themes
+   ========================================================== */
+.theme-block {
+  padding: 24px 0;
+  border-top: 1px solid var(--rule-fine);
+}
+.theme-block:first-of-type { border-top: 0; padding-top: 0; }
+.theme-block .n {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-mute);
+  margin-bottom: 6px;
+  letter-spacing: 0;
+}
+.theme-block h3 {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: -0.022em;
+  color: var(--text);
+  margin: 0 0 8px;
+  font-variation-settings: "opsz" 24;
+}
+.theme-block .question {
+  font-family: "Inter", sans-serif;
+  font-size: 14.5px;
+  font-weight: 450;
+  color: var(--accent);
+  margin-bottom: 14px;
+  font-style: italic;
+}
+.theme-block .papers {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--text-mute);
+  line-height: 1.55;
+  padding: 10px 14px;
+  background: var(--bg-elev);
+  border-radius: 6px;
+  border: 1px solid var(--rule);
+}
+.theme-block .papers .lbl {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--text-mute);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 4px;
+}
+.theme-block .papers a {
+  color: var(--text);
+  border-bottom: 1px solid var(--accent);
+  font-size: 13px;
+}
+.theme-block .papers a:hover { color: var(--accent); }
+
+/* ==========================================================
+   CV
+   ========================================================== */
+.cv-block {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 20px;
+  padding: 14px 0;
+  border-top: 1px solid var(--rule-fine);
+}
+.cv-block:first-of-type { border-top: 0; }
+@media (max-width: 600px) {
+  .cv-block { grid-template-columns: 1fr; gap: 6px; }
+}
+.cv-block .when {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11.5px;
+  color: var(--text-mute);
+  font-feature-settings: "tnum";
+  padding-top: 2px;
+}
+.cv-block .what {
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--text-body);
+}
+.cv-block .what strong {
+  font-weight: 600;
+  color: var(--text);
+}
+.cv-block .what .detail {
+  display: block;
+  font-size: 13px;
+  color: var(--text-mute);
+  margin-top: 3px;
+}
+.cv-block .what a { color: var(--text); border-bottom: 1px solid var(--accent); }
+.cv-block .what a:hover { color: var(--accent); }
+
+/* CV download button */
+.cv-dl {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: var(--text);
+  color: var(--bg);
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  margin-top: 16px;
+  transition: all .15s;
+}
+.cv-dl:hover { background: var(--accent); transform: translateY(-1px); }
+.cv-dl .sz {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 10.5px;
+  opacity: .7;
+}
+
+/* ==========================================================
+   CONTACT ROW + FOOTER
+   ========================================================== */
+.contact-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 28px 0 16px;
+}
+.contact-row a {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 12px;
+  color: var(--text-soft);
+  background: var(--bg-elev);
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--rule);
+  transition: all .15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.contact-row a::before {
+  content: "↗";
+  font-size: 11px;
+  color: var(--text-mute);
+}
+.contact-row a:hover {
+  color: var(--text);
+  border-color: var(--accent);
+}
+.contact-row a:hover::before { color: var(--accent); }
+
+footer {
+  margin-top: 56px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px;
+  color: var(--text-mute);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+footer a { color: var(--text-soft); }
+footer a:hover { color: var(--accent); }
+footer .commit {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+footer .commit .hash {
+  background: var(--bg-elev);
+  padding: 1px 6px;
+  border-radius: 3px;
+  border: 1px solid var(--rule);
+  color: var(--text-soft);
+}
+
+/* entrance */
+.rv { opacity: 0; transform: translateY(6px); animation: rv .6s cubic-bezier(.2,.7,.2,1) forwards; }
+.rv.d1 { animation-delay: .04s; }
+.rv.d2 { animation-delay: .12s; }
+.rv.d3 { animation-delay: .2s; }
+@keyframes rv { to { opacity: 1; transform: translateY(0); } }
+
+</style>
 </head>
 <body>
 
-<header class="nav">
-  <div class="nav-inner">
-    <a href="index.html" class="wordmark">Digbalay Bose</a>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="wordmark">
+      <span class="mark">db</span>
+      <span>Digbalay Bose</span>
+    </a>
     <nav>
-      <a href="index.html">About</a>
-      <a href="research.html" class="current">Research</a>
-      <a href="publications.html">Publications</a>
-      <a href="dispatches.html">Dispatches</a>
-      <a href="cv.html">CV</a>
-      <button class="tbtn" onclick="toggleTheme()">Mode</button>
+      <a href="index.html">about</a>
+      <a href="research.html" class="current">research</a>
+      <a href="publications.html">publications</a>
+      <a href="dispatches.html">notes</a>
+      <a href="cv.html">cv</a>
     </nav>
+    <button class="tbtn" onclick="toggleTheme()">◐</button>
   </div>
 </header>
 
 <article>
 
-  <!-- ================== MASTHEAD ================== -->
   <div class="masthead rv d1">
-    <div class="dateline">The Work · 2026</div>
-    <h1>Re<em>search</em></h1>
-    <p class="subtitle">Notes on a small set of questions I keep returning to about multimodal learning.</p>
-    <div class="sep">· · ·</div>
+    <div>
+      <div class="updated"><span class="dot"></span>research focus · 2026</div>
+      <h1>Research</h1>
+      <p class="role">
+        Three questions I keep returning to about multimodal learning, with pointers to the papers that live under each.
+      </p>
+    </div>
   </div>
 
-  <!-- ================== INTRO ================== -->
+  <!-- ================ INTRO ================ -->
   <section class="rv d2">
-    <p class="lead">
-      My work sits at the intersection of <strong>multimodal machine learning</strong>, <strong>computer vision</strong>, and <strong>applications of computer vision in healthcare</strong>. These threads don&rsquo;t always look related on a publication list, but they share a common preoccupation: <em>how to build models that read the world through more than one sense at once, and hold up when the world cooperates less than the benchmark did.</em>
-    </p>
-
+    <h2><span class="num">01</span>overview</h2>
     <p>
-      In practice, the work orbits three concerns &mdash; each of which I&rsquo;ve been chasing, in one form or another, since the middle of graduate school. What follows is a short note on each, with a few pointers to the papers that live under them.
+      My work sits at the intersection of <strong>multimodal machine learning</strong>, <strong>computer vision</strong>, and <strong>computer vision in healthcare</strong>. These threads share a common preoccupation: <em>how to build models that read the world through more than one sense at once, and hold up when the world cooperates less than the benchmark did.</em>
+    </p>
+    <p>
+      In practice, the work orbits three concerns — each chased, in one form or another, since graduate school.
     </p>
   </section>
 
-  <hr class="orn">
-
-  <!-- ================== THEMES ================== -->
+  <!-- ================ THEMES ================ -->
   <section class="rv d2">
-    <h2 data-num="§ II">Three Questions</h2>
+    <h2><span class="num">02</span>three questions</h2>
 
-    <!-- ─── Robustness ─── -->
     <div class="theme-block">
-      <div class="n">Question 01</div>
-      <h3>Robustness</h3>
-      <div class="opening">&ldquo;How can a multimodal model fail <em>gracefully</em>, instead of collapsing?&rdquo;</div>
+      <div class="n">01 / robustness</div>
+      <h3>Failing gracefully under missing modalities</h3>
+      <div class="question">How can a multimodal model degrade gracefully instead of collapsing when an input drops out?</div>
       <p>
-        Multimodal models tend to break in the wild for an unglamorous reason: one of the modalities is missing or corrupted, and the system has no way to route around it. A video file arrives with silent audio. A page scan is blurred beyond OCR. A sensor drops out mid-inference.
+        Multimodal models tend to break in the wild for an unglamorous reason: one modality is missing or corrupted, and the system has no way to route around it. A video file arrives with silent audio. A page scan is blurred beyond OCR. A sensor drops out mid-inference.
       </p>
       <p>
-        Most of my recent work has been about teaching models to degrade gracefully &mdash; or, better, to re-route &mdash; when the input they expected isn&rsquo;t there. Generative models have become useful collaborators here: synthetic imagery can stand in for missing visual modalities at both training and test time, improving data efficiency and robustness at once.
+        Most of my recent work is about teaching models to degrade gracefully — or, better, to re-route — when the input they expected isn't there. Generative models have become useful collaborators here: synthetic imagery can stand in for missing visual modalities at both training and test time.
       </p>
       <div class="papers">
-        <span class="plabel">Representative work</span>
-        <a href="publications.html">Can Text-to-image Models Assist Multi-modal Learning with Visual Modality Missing?</a> &nbsp;·&nbsp;
-        <a href="publications.html">FedMultimodal: A Benchmark for Multimodal Federated Learning</a>
+        <span class="lbl">→ representative papers</span>
+        <a href="publications.html">Text-to-image Models Assist Multi-modal Learning</a>
+        &nbsp;·&nbsp;
+        <a href="publications.html">FedMultimodal: Multimodal Federated Learning</a>
       </div>
     </div>
 
-    <!-- ─── Generalization ─── -->
     <div class="theme-block">
-      <div class="n">Question 02</div>
-      <h3>Generalization</h3>
-      <div class="opening">&ldquo;How do we move beyond the narrow slice of the world our benchmarks know?&rdquo;</div>
+      <div class="n">02 / generalization</div>
+      <h3>Beyond the narrow training distribution</h3>
+      <div class="question">How do we move beyond the narrow slice of the world our benchmarks know?</div>
       <p>
-        Most multimodal benchmarks overfit to a small, Anglophone-Western slice of the world. Faces, voices, advertising, storytelling, TV and film &mdash; the training distribution of a modern multimodal model is almost never <em>the world</em>. I care about systems that extend gracefully to novel tasks, diverse cultures, and long-tailed domains.
+        Most multimodal benchmarks overfit to a small, Anglophone-Western slice of the world. Faces, voices, advertising, storytelling, TV and film — the training distribution of a modern multimodal model is almost never <em>the world</em>. I care about systems that extend gracefully to novel tasks, diverse cultures, and long-tailed domains.
       </p>
       <p>
-        A recent joint study with <a href="https://research.google/" target="_blank">Google Research</a> and the <a href="https://seejane.org/" target="_blank">Geena Davis Institute on Gender in Media</a> on demographic representation in Indian television was one way of asking what generalization means when the training distribution is not the world. Advertisement understanding, movie scene recognition, and cross-domain sentiment analysis are other ways I&rsquo;ve approached the same question.
+        A recent joint study with <a href="https://research.google/" target="_blank">Google Research</a> and the <a href="https://seejane.org/" target="_blank">Geena Davis Institute on Gender in Media</a> on demographic representation in Indian television was one way of asking what generalization means when the training distribution is not the world.
       </p>
       <div class="papers">
-        <span class="plabel">Representative work</span>
-        <a href="publications.html">MM-AU: Multimodal Understanding of Advertisement Videos</a> &nbsp;·&nbsp;
-        <a href="publications.html">MovieCLIP: Visual Scene Recognition in Movies</a> &nbsp;·&nbsp;
+        <span class="lbl">→ representative papers</span>
+        <a href="publications.html">MM-AU: Multimodal Understanding of Advertisement Videos</a>
+        &nbsp;·&nbsp;
+        <a href="publications.html">MovieCLIP: Visual Scene Recognition in Movies</a>
+        &nbsp;·&nbsp;
         <a href="publications.html">Domain Adaptation for Sentiment Analysis</a>
       </div>
     </div>
 
-    <!-- ─── Explainability ─── -->
     <div class="theme-block">
-      <div class="n">Question 03</div>
-      <h3>Explainability</h3>
-      <div class="opening">&ldquo;If a multimodal model reasons well, can I inspect <em>how</em>?&rdquo;</div>
+      <div class="n">03 / explainability</div>
+      <h3>Reasoning you can audit</h3>
+      <div class="question">If a multimodal model reasons well, can I inspect <em>how</em>?</div>
       <p>
-        A multimodal model&rsquo;s reasoning hides inside its fusion layers, where attention and feature mixing make opaque choices we later rationalize as predictions. I&rsquo;m interested in architectures whose reasoning a human can inspect &mdash; attention maps that mean something, feature contributions that can be audited, and evaluations that look past accuracy toward whether we can <em>trust</em> what a system did and why.
+        A multimodal model's reasoning hides inside its fusion layers, where attention and feature mixing make opaque choices we later rationalize as predictions. I'm interested in architectures whose reasoning a human can inspect — attention maps that mean something, feature contributions that can be audited, and evaluations that look past accuracy toward whether we can <em>trust</em> what a system did and why.
       </p>
       <p>
-        This matters most in the healthcare applications I work on, where a model&rsquo;s output can shape a clinical decision. Whether it&rsquo;s analyzing facial asymmetry in paralysis patients, estimating physiological arousal during driving, or studying sleep patterns as a biomarker, the model&rsquo;s reasoning has to survive scrutiny by someone who isn&rsquo;t a machine-learning researcher.
+        This matters most in the healthcare applications I work on, where a model's output can shape a clinical decision. Whether it's analyzing facial asymmetry in paralysis patients, estimating physiological arousal during driving, or studying sleep patterns as a biomarker, the reasoning has to survive scrutiny by someone who isn't a machine-learning researcher.
       </p>
       <div class="papers">
-        <span class="plabel">Representative work</span>
-        <a href="publications.html">Automatic Analysis of Asymmetry in Facial Paralysis Patients</a> &nbsp;·&nbsp;
-        <a href="publications.html">Multimodal Foundation Models for Autism Diagnostic Videos</a> &nbsp;·&nbsp;
+        <span class="lbl">→ representative papers</span>
+        <a href="publications.html">Asymmetry in Facial Paralysis Patients</a>
+        &nbsp;·&nbsp;
+        <a href="publications.html">Multimodal Foundation Models for Autism Diagnostics</a>
+        &nbsp;·&nbsp;
         <a href="publications.html">Contextually-rich Human Affect Perception</a>
       </div>
     </div>
   </section>
 
-  <hr class="orn">
-
-  <!-- ================== COLLABORATIONS ================== -->
+  <!-- ================ COLLABS ================ -->
   <section class="rv d3">
-    <h2 data-num="§ III">Collaborations &amp; Labs</h2>
-
+    <h2><span class="num">03</span>collaborations</h2>
     <p>
-      The work above was shaped by the people I&rsquo;ve had the luck to work with. In graduate school, by <a href="https://sail.usc.edu/people/shri.html" target="_blank">Prof. Shrikanth Narayanan</a> and the community at the <a href="https://sail.usc.edu/" target="_blank">Signal Analysis and Interpretation Laboratory</a> at USC. Before that, by <a href="https://www.ee.iitb.ac.in/~sc/" target="_blank">Prof. Subhasis Chaudhuri</a> at IIT Bombay. Industry collaborators at <a href="https://research.adobe.com/" target="_blank">Adobe Research</a>, <a href="https://research.ibm.com/labs/india/" target="_blank">IBM Research</a>, <a href="https://developer.nvidia.com/maxine" target="_blank">NVIDIA Maxine</a>, <a href="https://research.google/" target="_blank">Google Research</a>, and clinicians at USC&rsquo;s Keck School have all left their mark.
-    </p>
-
-    <div class="pullquote">
-      &ldquo;Good research is rarely a solo act. These pages make it look like one &mdash; that&rsquo;s an artifact of how <em>CVs</em> are written, not of how the work happened.&rdquo;
-    </div>
-  </section>
-
-  <hr class="orn">
-
-  <!-- ================== WHAT I'D LIKE TO HEAR ================== -->
-  <section class="rv d3">
-    <h2 data-num="§ IV">What I&rsquo;d Like to Hear About</h2>
-
-    <p>
-      If you&rsquo;re working on any of the following, I&rsquo;d be glad to hear from you:
-    </p>
-
-    <p style="margin-left: 18px; padding-left: 18px; border-left: 2px solid var(--accent-dim); font-size: 17px; color: var(--ink-body); line-height: 1.6;">
-      &mdash; <em>Multimodal foundation models</em> for document and media understanding.<br>
-      &mdash; <em>Robustness under missing modalities</em>, whether via generation, fusion, or architectural design.<br>
-      &mdash; Applications of computer vision and audio in <em>clinical workflows</em> &mdash; especially where interpretability matters.<br>
-      &mdash; Fair and <em>culturally diverse</em> multimodal evaluation.
-    </p>
-
-    <p style="text-align: center; margin-top: 28px;">
-      Reach me at <a href="mailto:dbose@usc.edu">dbose [at] usc [dot] edu</a>.
+      The work above was shaped by the people I've had the luck to work with. In graduate school: <a href="https://sail.usc.edu/people/shri.html" target="_blank">Prof. Shrikanth Narayanan</a> and the <a href="https://sail.usc.edu/" target="_blank">SAIL community</a> at USC. Before that: <a href="https://www.ee.iitb.ac.in/~sc/" target="_blank">Prof. Subhasis Chaudhuri</a> at IIT Bombay. Industry collaborators at <a href="https://research.adobe.com/" target="_blank">Adobe Research</a>, <a href="https://research.ibm.com/labs/india/" target="_blank">IBM Research</a>, <a href="https://developer.nvidia.com/maxine" target="_blank">NVIDIA Maxine</a>, and <a href="https://research.google/" target="_blank">Google Research</a> — and clinicians at USC Keck — have all left their mark.
     </p>
   </section>
 
-  <div class="colophon">
-    <p>
-      A longer academic record, including talks, teaching, and service, lives on the <a href="cv.html">CV page</a>. The complete list of papers is on <a href="publications.html">Publications</a>.
+  <!-- ================ INTERESTS ================ -->
+  <section class="rv d3">
+    <h2><span class="num">04</span>interested in hearing about</h2>
+
+    <ul class="notes" style="margin-top: -8px;">
+      <li>
+        <div class="date">topic</div>
+        <div class="kind paper">multimodal</div>
+        <div class="body">Foundation models for document and media understanding.</div>
+      </li>
+      <li>
+        <div class="date">topic</div>
+        <div class="kind paper">robustness</div>
+        <div class="body">Missing-modality learning via generation, fusion, or architectural design.</div>
+      </li>
+      <li>
+        <div class="date">topic</div>
+        <div class="kind award">healthcare</div>
+        <div class="body">Computer vision and audio in clinical workflows — especially where interpretability matters.</div>
+      </li>
+      <li>
+        <div class="date">topic</div>
+        <div class="kind role">eval</div>
+        <div class="body">Fair and culturally diverse multimodal evaluation.</div>
+      </li>
+    </ul>
+
+    <p style="margin-top: 24px;">
+      Get in touch: <code>dbose [at] usc [dot] edu</code>.
     </p>
-    <div class="sig">&mdash; D. B.</div>
-  </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Digbalay Bose</span>
+    <span class="commit"><a href="https://github.com/digbose92/digbose92.github.io" target="_blank">source</a> · <span class="hash">a7f4e2c</span></span>
+  </footer>
 
 </article>
 
