@@ -1291,7 +1291,7 @@
     <div class="now-block rv d1">
       <div class="lbl">contact</div>
       <div class="body">
-        <code>digbose92 [at] gmail [dot] com</code>
+        <a href="#" class="email-reveal" data-u="29esobgid" data-d="moc.liamg" role="button">Send email</a>
       </div>
     </div>
 
@@ -1434,7 +1434,7 @@
 
     <!-- ================ CONTACT ================ -->
     <div class="contact-row rv d3">
-      <a href="mailto:dbose@usc.edu">email</a>
+      <a href="mailto:digbose92@gmail.com">email</a>
       <a href="https://scholar.google.com/citations?user=Jf6gjLUAAAAJ&hl" target="_blank">scholar</a>
       <a href="https://github.com/digbose92" target="_blank">github</a>
       <a href="https://www.linkedin.com/in/digbalay-bose-11146251/" target="_blank">linkedin</a>
@@ -1458,6 +1458,15 @@
       html.setAttribute('data-theme',
         html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
     }
+
+    document.querySelectorAll('.email-reveal').forEach((el) => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        const u = (el.dataset.u || '').split('').reverse().join('');
+        const d = (el.dataset.d || '').split('').reverse().join('');
+        if (u && d) window.location.href = 'mailto:' + u + '@' + d;
+      });
+    });
   </script>
 </body>
 

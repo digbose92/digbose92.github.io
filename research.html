@@ -203,7 +203,8 @@ article {
   font-size: 16px;
   color: var(--text-soft);
   line-height: 1.4;
-  max-width: 42ch;
+  max-width: none;
+  width: 100%;
 }
 .masthead .role a {
   color: var(--text);
@@ -717,12 +718,18 @@ code, .mono {
 }
 .theme-block:first-of-type { border-top: 0; padding-top: 0; }
 .theme-block .n {
-  font-family: "JetBrains Mono", ui-monospace, monospace;
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--text-mute);
-  margin-bottom: 6px;
-  letter-spacing: 0;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin: 0 0 8px;
+}
+.theme-block ul {
+  padding-left: 1.3em;
+}
+.theme-block li + li {
+  margin-top: 8px;
 }
 .theme-block h3 {
   font-family: "Inter", sans-serif;
@@ -923,7 +930,7 @@ footer .commit .hash {
       <div class="updated"><span class="dot"></span>research focus · 2026</div>
       <h1>Research</h1>
       <p class="role">
-        Three questions I keep returning to about multimodal learning, with pointers to the papers that live under each.
+        Open problems I keep returning to — and what they suggest about where AI is headed.
       </p>
     </div>
   </div>
@@ -932,10 +939,9 @@ footer .commit .hash {
   <section class="rv d2">
     <h2><span class="num">01</span>overview</h2>
     <p>
-      My work sits at the intersection of <strong>multimodal machine learning</strong>, <strong>computer vision</strong>, and <strong>computer vision in healthcare</strong>. These threads share a common preoccupation: <em>how to build models that read the world through more than one sense at once, and hold up when the world cooperates less than the benchmark did.</em>
-    </p>
-    <p>
-      In practice, the work orbits three concerns — each chased, in one form or another, since graduate school.
+      My work sits at the intersection of <strong>multi-agent systems</strong>, <strong>multimodal understanding</strong>, and <strong>controllable generation</strong>.
+      <!-- These threads share a common preoccupation: <em>how to build agentic multi-modal models that fuse more than one kind of signal — and still behave when deployment is messier than the benchmark.</em> -->
+      <!-- alt: how to build models that read the world through more than one sense at once, and hold up when the world cooperates less than the benchmark did. -->
     </p>
   </section>
 
@@ -944,10 +950,19 @@ footer .commit .hash {
     <h2><span class="num">02</span>three questions</h2>
 
     <div class="theme-block">
-      <div class="n">01 / robustness</div>
-      <h3>Failing gracefully under missing modalities</h3>
-      <div class="question">How can a multimodal model degrade gracefully instead of collapsing when an input drops out?</div>
+      <div class="n">01 / multi-agent systems</div>
       <p>
+        Multi-agent AI systems — where multiple LLM-based agents perceive, reason, and act together — concentrate a peculiar set of difficulties that single-agent setups largely sidestep. Problems of interest include:
+      </p>
+      <ul>
+        <li><strong>Structuring collaboration.</strong> Agents may cooperate, compete, or do both at once (coopetition), under centralized, decentralized, or hierarchical topologies, governed by rule-, role-, or model-based strategies — and no single combination dominates across tasks.</li>
+        <li><strong>Governance and collective decision-making.</strong> There is still no agreed framework for distributing tasks, assigning roles, and aggregating heterogeneous agent outputs into accurate joint decisions — <em>without collapsing the useful disagreement that motivated using multiple agents in the first place.</em></li>
+        <li><strong>Scalability.</strong> Communication overhead, context length, and orchestration complexity grow quickly with agent count, and the field's cleaner demos rarely survive that growth intact.</li>
+        <li><strong>Reliability, safety, and accountability.</strong> LLM hallucinations, bias, and vulnerabilities  do not stay isolated — they propagate through inter-agent dialogue, raising the stakes of misalignment, prompt-injection, and unclear responsibility for joint outcomes.</li>
+      </ul>
+      <!--h3>Failing gracefully under missing modalities</h3>
+      <!-- <div class="question">How can a multimodal model degrade gracefully instead of collapsing when an input drops out?</div> -->
+      <!-- <p>
         Multimodal models tend to break in the wild for an unglamorous reason: one modality is missing or corrupted, and the system has no way to route around it. A video file arrives with silent audio. A page scan is blurred beyond OCR. A sensor drops out mid-inference.
       </p>
       <p>
@@ -958,47 +973,32 @@ footer .commit .hash {
         <a href="publications.html">Text-to-image Models Assist Multi-modal Learning</a>
         &nbsp;·&nbsp;
         <a href="publications.html">FedMultimodal: Multimodal Federated Learning</a>
-      </div>
+      </div> -->
     </div>
 
     <div class="theme-block">
-      <div class="n">02 / generalization</div>
-      <h3>Beyond the narrow training distribution</h3>
-      <div class="question">How do we move beyond the narrow slice of the world our benchmarks know?</div>
+      <div class="n">02 / multimodal understanding</div>
       <p>
-        Most multimodal benchmarks overfit to a small, Anglophone-Western slice of the world. Faces, voices, advertising, storytelling, TV and film — the training distribution of a modern multimodal model is almost never <em>the world</em>. I care about systems that extend gracefully to novel tasks, diverse cultures, and long-tailed domains.
+        Multimodal understanding — getting a single model to perceive, align, and reason across text, images, video, 3D, and audio — has become the dominant theme of recent vision-language research. Problems of interest include:
       </p>
-      <p>
-        A recent joint study with <a href="https://research.google/" target="_blank">Google Research</a> and the <a href="https://seejane.org/" target="_blank">Geena Davis Institute on Gender in Media</a> on demographic representation in Indian television was one way of asking what generalization means when the training distribution is not the world.
-      </p>
-      <div class="papers">
-        <span class="lbl">→ representative papers</span>
-        <a href="publications.html">MM-AU: Multimodal Understanding of Advertisement Videos</a>
-        &nbsp;·&nbsp;
-        <a href="publications.html">MovieCLIP: Visual Scene Recognition in Movies</a>
-        &nbsp;·&nbsp;
-        <a href="publications.html">Domain Adaptation for Sentiment Analysis</a>
-      </div>
+      <ul>
+        <li><strong>Cross-modal alignment and fusion.</strong> Designing interfaces — cross-attention, Q-Formers, projectors, prompt and adapter tuning — that let heterogeneous encoders share a usable representation without erasing the structure each modality contributes.</li>
+        <li><strong>Multimodal reasoning.</strong> Moving past alignment to composition: treating each modality as a partial projection of a shared world-knowledge manifold  and unrolling evidence across modalities before producing an answer.</li>
+        <li><strong>Robustness and adversarial safety.</strong> Modern VLMs are "semantically strong but spatially fragile"  — low-severity geometric and resampling perturbations often degrade performance — while the continuous, high-dimensional nature of images also leaves them open to imperceptible adversarial perturbations that transfer across models and bypass safety mechanisms.</li>
+      </ul>
     </div>
 
     <div class="theme-block">
-      <div class="n">03 / explainability</div>
-      <h3>Reasoning you can audit</h3>
-      <div class="question">If a multimodal model reasons well, can I inspect <em>how</em>?</div>
+      <div class="n">03 / controllable generation</div>
       <p>
-        A multimodal model's reasoning hides inside its fusion layers, where attention and feature mixing make opaque choices we later rationalize as predictions. I'm interested in architectures whose reasoning a human can inspect — attention maps that mean something, feature contributions that can be audited, and evaluations that look past accuracy toward whether we can <em>trust</em> what a system did and why.
+        Controllable image and video generation — where a model must obey the user's intent down to the level of pose, layout, identity, or motion — concentrates difficulties that unconditional generation sidesteps. Problems of interest include:
       </p>
-      <p>
-        This matters most in the healthcare applications I work on, where a model's output can shape a clinical decision. Whether it's analyzing facial asymmetry in paralysis patients, estimating physiological arousal during driving, or studying sleep patterns as a biomarker, the reasoning has to survive scrutiny by someone who isn't a machine-learning researcher.
-      </p>
-      <div class="papers">
-        <span class="lbl">→ representative papers</span>
-        <a href="publications.html">Asymmetry in Facial Paralysis Patients</a>
-        &nbsp;·&nbsp;
-        <a href="publications.html">Multimodal Foundation Models for Autism Diagnostics</a>
-        &nbsp;·&nbsp;
-        <a href="publications.html">Contextually-rich Human Affect Perception</a>
-      </div>
+      <ul>
+        <li><strong>Multi-signal conditioning.</strong> Combining text, sketches, depth, pose, masks, references, and audio into a single coherent generation, when the signals often conflict or under-specify.</li>
+        <li><strong>Fidelity and compositionality.</strong> Honouring complex specs without sacrificing visual quality — <em>long-form coherent composition and generation from short-form videos is particularly challenging.</em></li>
+        <li><strong>Temporal and identity consistency.</strong> Keeping subjects, objects, and physics stable across frames or repeated generations, as small per-step errors compound.</li>
+        <li><strong>Evaluation and efficiency.</strong> Evaluation metrics for evaluating the controllability of the generated output is still an open problem.</li>
+      </ul>
     </div>
   </section>
 
@@ -1006,12 +1006,12 @@ footer .commit .hash {
   <section class="rv d3">
     <h2><span class="num">03</span>collaborations</h2>
     <p>
-      The work above was shaped by the people I've had the luck to work with. In graduate school: <a href="https://sail.usc.edu/people/shri.html" target="_blank">Prof. Shrikanth Narayanan</a> and the <a href="https://sail.usc.edu/" target="_blank">SAIL community</a> at USC. Before that: <a href="https://www.ee.iitb.ac.in/~sc/" target="_blank">Prof. Subhasis Chaudhuri</a> at IIT Bombay. Industry collaborators at <a href="https://research.adobe.com/" target="_blank">Adobe Research</a>, <a href="https://research.ibm.com/labs/india/" target="_blank">IBM Research</a>, <a href="https://developer.nvidia.com/maxine" target="_blank">NVIDIA Maxine</a>, and <a href="https://research.google/" target="_blank">Google Research</a> — and clinicians at USC Keck — have all left their mark.
+      The work above was shaped by the people I've had the luck to work with. In graduate school: <a href="https://sail.usc.edu/people/shri.html" target="_blank">Prof. Shrikanth Narayanan</a> and the <a href="https://sail.usc.edu/" target="_blank">SAIL community</a> at USC. Before that: <a href="https://www.ee.iitb.ac.in/~sc/" target="_blank">Prof. Subhasis Chaudhuri</a> at IIT Bombay. Industry collaborators at <a href="https://research.adobe.com/" target="_blank">Adobe Research</a>, <a href="https://research.ibm.com/labs/india/" target="_blank">IBM Research</a>, <a href="https://developer.nvidia.com/maxine" target="_blank">NVIDIA Maxine</a>, and <a href="https://research.google/" target="_blank">Google Research</a> — and  at USC Keck — have all contributed immensely to my research journey.
     </p>
   </section>
 
   <!-- ================ INTERESTS ================ -->
-  <section class="rv d3">
+  <!--section class="rv d3">
     <h2><span class="num">04</span>interested in hearing about</h2>
 
     <ul class="notes" style="margin-top: -8px;">
@@ -1038,9 +1038,9 @@ footer .commit .hash {
     </ul>
 
     <p style="margin-top: 24px;">
-      Get in touch: <code>dbose [at] usc [dot] edu</code>.
+      Get in touch: <code>digbose92 [at] gmail [dot] com</code>.
     </p>
-  </section>
+  </section-->
 
   <footer>
     <span>© 2026 Digbalay Bose</span>
