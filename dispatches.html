@@ -1015,7 +1015,7 @@ footer .commit .hash {
   </section-->
 
   <p style="margin-top: 32px; font-size: 13px; color: var(--text-mute);">
-    To follow updates, watch the <a href="https://github.com/digbose92/digbose92.github.io" target="_blank">repo</a> on GitHub or reach out at <code>dbose [at] usc [dot] edu</code>.
+    To follow updates, watch the <a href="https://github.com/digbose92/digbose92.github.io" target="_blank">repo</a> on GitHub or <a href="#" class="email-reveal" data-u="29esobgid" data-d="moc.liamg" role="button">send me an email</a>.
   </p>
 
   <footer>
@@ -1031,6 +1031,15 @@ footer .commit .hash {
     html.setAttribute('data-theme',
       html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
   }
+
+  document.querySelectorAll('.email-reveal').forEach((el) => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      const u = (el.dataset.u || '').split('').reverse().join('');
+      const d = (el.dataset.d || '').split('').reverse().join('');
+      if (u && d) window.location.href = 'mailto:' + u + '@' + d;
+    });
+  });
 </script>
 </body>
 </html>
