@@ -1257,7 +1257,7 @@
       <div>
         <div class="updated">
           <span class="dot"></span>
-          active · last updated 2026-04-17
+          active · last updated <span id="last-updated">…</span>
         </div>
         <h1>Digbalay Bose</h1>
         <p class="role">
@@ -1459,6 +1459,19 @@
       html.setAttribute('data-theme',
         html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
     }
+
+    fetch('https://api.github.com/repos/digbose92/digbose92.github.io/commits?per_page=1')
+      .then(r => r.json())
+      .then(([c]) => {
+        const el = document.getElementById('last-updated');
+        if (el && c?.commit?.committer?.date) {
+          el.textContent = c.commit.committer.date.slice(0, 10);
+        }
+      })
+      .catch(() => {
+        const el = document.getElementById('last-updated');
+        if (el) el.textContent = '2026';
+      });
 
     document.querySelectorAll('.email-reveal').forEach((el) => {
       el.addEventListener('click', (e) => {
