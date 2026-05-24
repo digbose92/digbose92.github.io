@@ -1,0 +1,164 @@
+/* ============================================================
+   Mobile-responsive overrides
+   Link AFTER the inline <style> block so these rules win.
+   ============================================================ */
+
+/* Safe-area custom properties for notched iPhones / punch-hole Android */
+:root {
+  --sat: env(safe-area-inset-top, 0px);
+  --sar: env(safe-area-inset-right, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
+}
+
+/* Prevent accidental horizontal scroll from any overflow */
+html, body { overflow-x: hidden; }
+
+/* Long words / URLs should break instead of overflowing */
+p, li, .body, .what, .authors, .booktitle,
+.pub-list > li .title, .notes li .body {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* ============================================================
+   640 px — tablets / large phones (landscape)
+   ============================================================ */
+@media (max-width: 640px) {
+  /* Bigger touch targets for nav + theme toggle */
+  .topbar nav a {
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .topbar .tbtn {
+    min-height: 40px;
+    min-width: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Safe-area padding on article */
+  article {
+    padding-left: calc(20px + var(--sal));
+    padding-right: calc(20px + var(--sar));
+    padding-bottom: calc(64px + var(--sab));
+  }
+}
+
+/* ============================================================
+   480 px — typical phones (portrait)
+   ============================================================ */
+@media (max-width: 480px) {
+  /* Topbar: hide full name, keep "db" badge */
+  .topbar-inner {
+    padding: 10px calc(16px + var(--sal)) 10px calc(16px + var(--sar));
+    gap: 10px;
+  }
+  .wordmark span:not(.mark) { display: none; }
+
+  /* Horizontally scrollable nav when links don't fit */
+  .topbar nav {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 2px;
+    flex-shrink: 1;
+    min-width: 0;
+  }
+  .topbar nav::-webkit-scrollbar { display: none; }
+  .topbar nav a {
+    padding: 8px 8px;
+    font-size: 12px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .topbar .tbtn {
+    flex-shrink: 0;
+    margin-left: 0;
+  }
+
+  /* Publications: tighter layout */
+  .pub-list > li .title { font-size: 15px; }
+  .pub-list > li .links { gap: 4px; }
+  .pub-list > li .links a { padding: 5px 8px; font-size: 10.5px; }
+
+  /* Filters: horizontal scroll instead of wrap */
+  .filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+  .filters::-webkit-scrollbar { display: none; }
+  .filter { flex-shrink: 0; }
+
+  /* Contact row: bigger tap targets */
+  .contact-row { gap: 8px; }
+  .contact-row a { padding: 8px 12px; min-height: 44px; }
+
+  /* Theme-block papers: friendlier line wrap */
+  .theme-block .papers { padding: 8px 12px; }
+  .theme-block .papers a { display: inline; line-height: 1.8; }
+
+  /* Spark strip: stack on narrow screens */
+  .spark-strip { grid-template-columns: 1fr; gap: 10px; }
+  .spark-strip svg { width: 100%; max-width: 200px; }
+
+  /* CV download button: accessible tap size */
+  .cv-dl { min-height: 44px; display: inline-flex; align-items: center; }
+}
+
+/* ============================================================
+   400 px — small phones (iPhone SE, Galaxy S series)
+   ============================================================ */
+@media (max-width: 400px) {
+  /* now-block: single column so label stacks above content */
+  .now-block {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    padding: 12px 14px;
+  }
+
+  /* Notes: collapse to single column */
+  .notes li {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  .notes li .kind  { grid-column: 1; }
+  .notes li .body  { grid-column: 1; }
+  .notes li .date  { font-size: 11px; }
+
+  /* CV blocks: tighter */
+  .cv-block { gap: 4px; }
+  .cv-block .what { font-size: 14px; }
+}
+
+/* ============================================================
+   380 px — very small phones
+   ============================================================ */
+@media (max-width: 380px) {
+  .masthead {
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .masthead h1 { font-size: clamp(28px, 8vw, 36px); }
+  .masthead .role { font-size: 14.5px; }
+
+  /* Portrait image smaller */
+  .portrait { width: 64px; height: 64px; border-radius: 10px; }
+
+  /* Stats: 2-col but more compact */
+  .stats-row { gap: 8px; }
+  .stat { padding: 10px 12px; }
+  .stat .n { font-size: 20px; }
+}
+
+/* ============================================================
+   Footer: safe area for phones with gesture bars
+   ============================================================ */
+footer {
+  padding-bottom: var(--sab);
+}
